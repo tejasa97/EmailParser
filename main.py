@@ -1,12 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 15 18:36:49 2018
-
-@author: tejas
-"""
 #Import all necessary modules
-
 from tabulate import tabulate
 import sys
 import time
@@ -65,7 +57,6 @@ UNIQUE_MAIL = pd.DataFrame({"Email ID" : u_email, "Last date of conversation" : 
 
 print("All mails : \n\n")
 pretty_print_df(ALL_MAIL)
-
 print("\n\nUnique mails with last date of conversation : \n\n")
 pretty_print_df(UNIQUE_MAIL)
 
