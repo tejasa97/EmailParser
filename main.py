@@ -7,12 +7,12 @@ import csv
 import numpy as np
 import pandas as pd
 
+def pretty_print_df(df):
+    print (tabulate(df, headers='keys', tablefmt='psql'))
+    
 #Empty arrays to buffer data from the CSV
 temp, row = ([] for i in range(2))
 csv_file = sys.argv[1]
-
-def pretty_print_df(df):
-    print (tabulate(df, headers='keys', tablefmt='psql'))
   
 #Open CSV and dump data into array 'row'
 with open(csv_file, 'r') as csvfile:
