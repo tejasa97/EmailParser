@@ -1,3 +1,4 @@
+
 #Import all necessary modules
 from tabulate import tabulate
 import sys
@@ -7,12 +8,12 @@ import csv
 import numpy as np
 import pandas as pd
 
-def pretty_print_df(df):
-    print (tabulate(df, headers='keys', tablefmt='psql'))
-    
 #Empty arrays to buffer data from the CSV
 temp, row = ([] for i in range(2))
 csv_file = sys.argv[1]
+
+def pretty_print_df(df):
+    print (tabulate(df, headers='keys', tablefmt='psql'))
   
 #Open CSV and dump data into array 'row'
 with open(csv_file, 'r') as csvfile:
@@ -52,16 +53,16 @@ for i in range(len(u_email)):
             dates.append(datetime.strptime(date[j], "%d/%m/%y"))
     rec_date.append(max(dates))
      
-ALL_MAIL = pd.DataFrame({"Email ID" : email, "Email Message" : msg, "Date": date, "Key words" : key_word})
-UNIQUE_MAIL = pd.DataFrame({"Email ID" : u_email, "Last date of conversation" : [i.strftime('%d/%m/%y') for i in rec_date], "Elapsed days" : [(today - rec_date[i]).days for i in range(len(u_email))]})
+ALL_MAIL = pd.DataFrame({"Email ID" : email, "Email Message" : msg, "Date": date, "Key words" : key_word}, index = [i+1 for i in range(len(email))])
+UNIQUE_MAIL = pd.DataFrame({"Email ID" : u_email, "Last date of conversation" : [i.strftime('%d/%m/%y') for i in rec_date], "Elapsed days" : [(today - rec_date[i]).days for i in range(len(u_email))]}, index = [i+1 for i in range(len(rec_date))])
 
 print("All mails : \n\n")
 pretty_print_df(ALL_MAIL)
-print("\n\nUnique mails with last date of conversation : \n\n")
+
+print("\n\nUnique mails with their respective last dates of conversation : \n\n")
 pretty_print_df(UNIQUE_MAIL)
 
     
-
 
 
 
