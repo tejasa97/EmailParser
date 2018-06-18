@@ -1,5 +1,5 @@
 # EmailParser
 EmailParser project as part of assignment
 
-USAGE : \n
+USAGE : 
 python main.py input.csv
